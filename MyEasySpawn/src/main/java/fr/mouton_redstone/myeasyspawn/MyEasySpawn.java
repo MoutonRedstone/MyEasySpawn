@@ -1,0 +1,18 @@
+package fr.mouton_redstone.myeasyspawn;
+
+import fr.mouton_redstone.myeasyspawn.commands.SpawnCommand;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public final class MyEasySpawn extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+        System.out.println("[My Easy Spawn] --> My Easy Spawn has successfully started");
+        getCommand("spawn").setExecutor(new SpawnCommand());
+    }
+
+    @Override
+    public void onDisable() {
+        System.out.println("[My Easy Spawn] --> My Easy Spawn has successfully stopped");
+    }
+}
