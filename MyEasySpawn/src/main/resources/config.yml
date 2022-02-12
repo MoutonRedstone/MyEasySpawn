@@ -1,0 +1,13 @@
+#The message displayed when a player Joins/Leaves, set to 'None' if you don't want to change it, use {username} to write the player's username
+joinMessage: 'None'
+leaveMessage: 'None'
+
+#Same but for the teleportation
+teleportMessage: 'None'
+
+#Colors : BLACK,     LIGHT_GRAY, DARK_BLUE, DARK_AQUA, DARK_GREEN, DARK_RED, DARK_PURPLE,  DARK_YELLOW, GOLD
+#         DARK_GRAY, WHITE,      BLUE,      AQUA,      GREEN,      RED,      LIGHT_PURPLE, YELLOW,
+
+joinMessageColor : YELLOW
+leaveMessageColor : YELLOW
+teleportMessageColor : GOLD

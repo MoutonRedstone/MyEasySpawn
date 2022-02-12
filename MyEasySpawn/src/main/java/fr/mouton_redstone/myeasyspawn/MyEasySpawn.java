@@ -7,8 +7,11 @@ public final class MyEasySpawn extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
         System.out.println("[My Easy Spawn] --> My Easy Spawn has successfully started");
         getCommand("spawn").setExecutor(new SpawnCommand());
+        getServer().getPluginManager().registerEvents(new JoinLeaveListener(), this);
     }
 
     @Override
