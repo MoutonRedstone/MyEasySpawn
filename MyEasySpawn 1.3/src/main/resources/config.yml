@@ -1,0 +1,19 @@
+#The message displayed when a player Joins/Leaves, set to 'None' if you don't want to change it,
+#use {username} to write the player's username
+joinMessage: 'None'
+leaveMessage: 'None'
+
+#Same but for the teleportation (will only be sent to the teleported player)
+teleportMessage: 'None'
+
+#Colors : BLACK,     LIGHT_GRAY, DARK_BLUE, DARK_AQUA, DARK_GREEN, DARK_RED, DARK_PURPLE,  DARK_YELLOW, GOLD
+#         DARK_GRAY, WHITE,      BLUE,      AQUA,      GREEN,      RED,      LIGHT_PURPLE, YELLOW,
+joinMessageColor : YELLOW
+leaveMessageColor : YELLOW
+teleportMessageColor : GOLD
+
+#Cooldowns (in seconds)
+spawnCooldown: 0
+
+#name of the world in which the player will be teleported when doing /spawn
+spawnWorldName : 'world'
