@@ -1,0 +1,30 @@
+#╔═══════════════════════════════════════════════════════════════════════════╗
+#║   __  __       ______                 _____                               ║
+#║  |  \/  |     |  ____|               / ____|                              ║
+#║  | \  / |_   _| |__   __ _ ___ _   _| (___  _ __   __ ___      ___ __     ║
+#║  | |\/| | | | |  __| / _` / __| | | |\___ \| '_ \ / _` \ \ /\ / / '_  \   ║
+#║  | |  | | |_| | |___| (_| \__ \ |_| |____) | |_) | (_| |\ V  V /| | | |   ║
+#║  |_|  |_|\__, |______\__,_|___/\__, |_____/| .__/ \__,_| \_/\_/ |_| |_|   ║
+#║           __/ |                 __/ |      | |                            ║
+#║           |___/                 |___/      |_|                            ║
+#╚═══════════════════════════════════════════════════════════════════════════╝
+et là
+# The message displayed when a player Joins/Leaves the server,
+# use {username} to write the player's username
+changeJoinLeaveMessages: False
+joinMessage: 'Hello {username}'
+leaveMessage: 'Goodbye {username}'
+
+# Same but for the teleportation (will only be sent to the teleported player), leave blank for no message
+teleportMessage: 'Here you go !'
+
+# Colors : BLACK,     LIGHT_GRAY, DARK_BLUE, DARK_AQUA, DARK_GREEN, DARK_RED, DARK_PURPLE,  DARK_YELLOW, GOLD
+#          DARK_GRAY, WHITE,      BLUE,      AQUA,      GREEN,      RED,      LIGHT_PURPLE, YELLOW,
+joinMessageColor : YELLOW
+leaveMessageColor : YELLOW
+teleportMessageColor : GOLD
+
+# Cooldown for all tp commands (in seconds)
+cooldown: 0
+
+# This plugin was made by Mouton_redstone, all rights reserved

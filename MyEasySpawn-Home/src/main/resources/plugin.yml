@@ -1,0 +1,16 @@
+name: MyEasySpawn-Home
+version: '${project.version}'
+main: fr.mouton_redstone.myeasyspawnhome.MyEasySpawnHome
+api-version: 1.18
+authors: [ Mouton_redstone ]
+description: adds /home command
+depend:
+  - MyEasySpawn
+
+commands:
+  sethome:
+    description: set your home location
+    usage: /<command>
+  home:
+    description: teleports you to your home
+    usage: /<command>

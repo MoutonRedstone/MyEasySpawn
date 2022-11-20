@@ -1,0 +1,34 @@
+name: MyEasySpawn
+version: '${project.version}'
+main: fr.mouton_redstone.myeasyspawn.MyEasySpawn
+api-version: 1.18
+authors: [ Mouton_redstone ]
+description: Adds a /spawn command and more
+
+commands:
+  spawn:
+    description: Teleports you to spawn
+    usage: /<command>
+    permission: myeasyspawn.spawn
+  mes setcooldown:
+    description: Sets the cooldown for the spawn command
+    usage: /<command> <time in seconds>
+    permission: myeasyspawn.configure
+  mes config:
+    description: Opens a GUI to edit the settings
+    usage:  /<command>
+    permission: myeasyspawn.configure
+
+permissions:
+  myeasyspawn.spawn:
+    description: Allows to teleport to spawn using /spawn
+    default: true
+  myeasyspawn.configure:
+    description: Allows to edit plugin's config through commands
+    default: op
+  myeasyspawn.*:
+    description: Allows to use every command of the plugins and its extensions
+    default: op
+    children:
+      myeasyspawn.spawn: true
+      myeasyspawn.configure: true

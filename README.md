@@ -1,0 +1,2 @@
+# MyEasySpawn
+ MinecraftPlugin
