@@ -37,3 +37,5 @@ public final class MyEasySpawn extends JavaPlugin {
     }
 
 }
+
+// This plugin was made by Mouton_Redstone, all Rights Reserved
