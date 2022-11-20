@@ -8,7 +8,7 @@
 #║           __/ |                 __/ |      | |                            ║
 #║           |___/                 |___/      |_|                            ║
 #╚═══════════════════════════════════════════════════════════════════════════╝
-et là
+
 # The message displayed when a player Joins/Leaves the server,
 # use {username} to write the player's username
 changeJoinLeaveMessages: False
