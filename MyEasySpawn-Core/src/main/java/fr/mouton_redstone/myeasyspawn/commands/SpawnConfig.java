@@ -27,22 +27,33 @@ public class SpawnConfig implements CommandExecutor {
 
             ItemStack cooldown = new ItemStack(Material.CLOCK);
             ItemMeta cooldown_meta = cooldown.getItemMeta();
-            cooldown_meta.setDisplayName("Spawn Command Cooldown : ");
-            List<String> lore = Arrays.asList( Integer.toString(plugin.getConfig().getInt("spawnCooldown")) );
+            cooldown_meta.setDisplayName("Spawn Command Cooldown");
+            List<String> lore = Arrays.asList( Integer.toString(plugin.getConfig().getInt("spawnCooldown")) + " seconds");
             cooldown_meta.setLore(lore);
             cooldown.setItemMeta(cooldown_meta);
+
+            ItemStack tpMessage = new ItemStack(Material.ENDER_PEARL);
+            ItemMeta tpMessage_meta = tpMessage.getItemMeta();
+            tpMessage_meta.setDisplayName("Edit teleport message");
+            lore = Arrays.asList(plugin.getConfig().getString("teleportMessage"));
+            tpMessage_meta.setLore(lore);
+            tpMessage.setItemMeta(tpMessage_meta);
 
             ItemStack joinMessage = new ItemStack(Material.GREEN_BED);
             ItemMeta joinMessage_meta = joinMessage.getItemMeta();
             joinMessage_meta.setDisplayName("Edit server's join message");
+            lore = Arrays.asList(plugin.getConfig().getString("joinMessage"));
+            joinMessage_meta.setLore(lore);
             joinMessage.setItemMeta(joinMessage_meta);
 
             ItemStack leaveMessage = new ItemStack(Material.RED_BED);
             ItemMeta leaveMessage_meta = leaveMessage.getItemMeta();
             leaveMessage_meta.setDisplayName("Edit server's leave message");
+            lore = Arrays.asList(plugin.getConfig().getString("leaveMessage"));
+            leaveMessage_meta.setLore(lore);
             leaveMessage.setItemMeta(leaveMessage_meta);
 
-            ItemStack[] home_items = {cooldown, joinMessage, leaveMessage};
+            ItemStack[] home_items = {cooldown, tpMessage, joinMessage, leaveMessage};
 
             gui.setContents(home_items);
             p.openInventory(gui);

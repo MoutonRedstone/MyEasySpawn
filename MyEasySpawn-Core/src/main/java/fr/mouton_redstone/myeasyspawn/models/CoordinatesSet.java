@@ -1,5 +1,8 @@
 package fr.mouton_redstone.myeasyspawn.models;
 
+import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
+import org.bukkit.Location;
+
 public class CoordinatesSet {
     private String world;
     private float x;
@@ -13,6 +16,17 @@ public class CoordinatesSet {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public CoordinatesSet(Location location) {
+        this.world = location.getWorld().getName();
+        this.x = (float) location.getX();
+        this.y = (float) location.getY();
+        this.z = (float) location.getZ();
+    }
+
+    public Location getLocation(){
+        return new Location(MyEasySpawn.getPlugin().getServer().getWorld(this.world), this.x, this.y, this.z);
     }
 
     public String getWorld() {

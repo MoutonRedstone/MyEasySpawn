@@ -10,14 +10,17 @@ commands:
     description: Teleports you to spawn
     usage: /<command>
     permission: myeasyspawn.spawn
-  mes setcooldown:
+  mes_setcooldown:
     description: Sets the cooldown for the spawn command
     usage: /<command> <time in seconds>
     permission: myeasyspawn.configure
-  mes config:
+  mes_config:
     description: Opens a GUI to edit the settings
     usage:  /<command>
     permission: myeasyspawn.configure
+  setworldspawn:
+    description: Sets the world's Spawn position
+    usage:  /<command>
 
 permissions:
   myeasyspawn.spawn:

@@ -9,6 +9,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MenuHandler implements Listener {
 
     Plugin plugin = MyEasySpawn.getPlugin(MyEasySpawn.class);
@@ -31,7 +34,9 @@ public class MenuHandler implements Listener {
                 }
                 plugin.getConfig().set("spawnCooldown", cooldown);
                 ItemMeta cooldown_meta = e.getCurrentItem().getItemMeta();
-                cooldown_meta.setDisplayName("Spawn Command Cooldown : " + plugin.getConfig().getInt("spawnCooldown"));
+                cooldown_meta.setDisplayName("Spawn Command Cooldown");
+                List<String> lore = Arrays.asList(Integer.toString(plugin.getConfig().getInt("spawnCooldown")) + " seconds");
+                cooldown_meta.setLore(lore);
                 e.getCurrentItem().setItemMeta(cooldown_meta);
             }
         }
