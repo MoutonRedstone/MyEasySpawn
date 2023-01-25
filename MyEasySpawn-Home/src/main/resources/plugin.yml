@@ -14,3 +14,12 @@ commands:
   home:
     description: teleports you to your home
     usage: /<command>
+
+permissions:
+  myeasyspawn.home:
+    description: allows to teleport to home
+    default: true
+
+  myeasyspawn.sethome:
+    description: allows to set homes
+    default: true

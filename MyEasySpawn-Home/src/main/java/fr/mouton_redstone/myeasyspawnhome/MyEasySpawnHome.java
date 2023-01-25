@@ -1,6 +1,11 @@
 package fr.mouton_redstone.myeasyspawnhome;
 
+import fr.mouton_redstone.myeasyspawnhome.commands.HomeCommand;
+import fr.mouton_redstone.myeasyspawnhome.commands.SetHomeCommand;
+import fr.mouton_redstone.myeasyspawnhome.models.HomesStorageUtil;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.IOException;
 
 public final class MyEasySpawnHome extends JavaPlugin {
 
@@ -10,9 +15,19 @@ public final class MyEasySpawnHome extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
-        System.out.println("[MyEasySpawn - Home] --> Successfully loaded the home extension !");
+
+        try {
+            HomesStorageUtil.loadHomes();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
         getCommand("sethome").setExecutor(new SetHomeCommand());
         getCommand("home").setExecutor(new HomeCommand());
+        System.out.println("[MyEasySpawn-Home] Successfully loaded the home extension !");
     }
 
     @Override
