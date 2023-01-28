@@ -1,14 +1,18 @@
 package fr.mouton_redstone.myeasyspawn.commands;
 
 import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
-import fr.mouton_redstone.myeasyspawn.models.WarpStorageUtil;
+import fr.mouton_redstone.myeasyspawn.models.SQLInterface;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SpawnCommand implements CommandExecutor {
 
@@ -17,7 +21,8 @@ public class SpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        Location spawn = WarpStorageUtil.getWarp("Spawn");
+        ResultSet spawnQuery = MyEasySpawn.sql.query("SELECT * FROM Warps WHERE name='Spawn'");
+        Location spawn = SQLInterface.resultToLocation(spawnQuery);
 
         if (sender instanceof Player p) { // Sender is a Player
             if (!MyEasySpawn.cooldown.containsKey(p.getUniqueId())) { // PLayer has not been cooldown-ed yet

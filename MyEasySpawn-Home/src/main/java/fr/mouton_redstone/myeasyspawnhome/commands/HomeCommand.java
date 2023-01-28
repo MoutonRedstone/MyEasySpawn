@@ -2,14 +2,11 @@ package fr.mouton_redstone.myeasyspawnhome.commands;
 
 import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
 import fr.mouton_redstone.myeasyspawnhome.MyEasySpawnHome;
-import fr.mouton_redstone.myeasyspawnhome.models.HomesStorageUtil;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
 public class HomeCommand implements CommandExecutor {
@@ -41,7 +38,7 @@ public class HomeCommand implements CommandExecutor {
                     p.teleport(home);
                 } else { // PLayer has an existing cooldown
                     long timeElapsed = System.currentTimeMillis() - MyEasySpawn.cooldown.get(p.getUniqueId());
-                    int spawnCooldown = plugin.getConfig().getInt("spawnCooldown") * 1000;
+                    int spawnCooldown = corePlugin.getConfig().getInt("spawnCooldown") * 1000;
                     if (timeElapsed >= spawnCooldown) { // Player waited long enough
                         p.teleport(home);
                         MyEasySpawn.cooldown.put(p.getUniqueId(), System.currentTimeMillis());

@@ -84,7 +84,7 @@
             <artifactId>MyEasySpawn</artifactId>
             <scope>system</scope>
             <version>1.4-RELEASE</version>
-            <systemPath>C:/Users/Un_dev/Documents/minercaft/blbl/MyEasySpawn-1.4-RELEASE.jar</systemPath>
+            <systemPath>C:/Users/Un_dev/Documents/minercaft/blbl/server/plugins/MyEasySpawn-1.4-RELEASE.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

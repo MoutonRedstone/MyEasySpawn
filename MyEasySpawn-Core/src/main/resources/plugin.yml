@@ -19,7 +19,7 @@ commands:
     usage:  /<command>
     permission: myeasyspawn.configure
   setworldspawn:
-    description: Sets the world's Spawn position
+    description: Sets the world spawn
     usage:  /<command>
 
 permissions:

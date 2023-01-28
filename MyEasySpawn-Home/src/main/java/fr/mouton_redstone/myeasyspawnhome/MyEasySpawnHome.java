@@ -1,8 +1,8 @@
 package fr.mouton_redstone.myeasyspawnhome;
 
+import fr.mouton_redstone.myeasyspawn.models.SQLInterface;
 import fr.mouton_redstone.myeasyspawnhome.commands.HomeCommand;
 import fr.mouton_redstone.myeasyspawnhome.commands.SetHomeCommand;
-import fr.mouton_redstone.myeasyspawnhome.models.HomesStorageUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -10,16 +10,21 @@ import java.io.IOException;
 public final class MyEasySpawnHome extends JavaPlugin {
 
     private static MyEasySpawnHome plugin;
+    // SQL related
+    public static SQLInterface sql;
+    private final String[] homesColumns = new String[]{"name","world", "x", "y", "z", "yaw", "pitch"};
+    private final String[] homesDims = new String[]{"TEXT NOT NULL PRIMARY KEY","TEXT NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0"};
+
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
 
-        try {
-            HomesStorageUtil.loadHomes();
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Load SQL and make sure there is a home table
+        sql = MyEasySpawnHome.sql;
+        if (!sql.checkTable("Homes")) {
+            sql.createTable("Homes", this.homesColumns, this.homesDims);
         }
 
         getConfig().options().copyDefaults();

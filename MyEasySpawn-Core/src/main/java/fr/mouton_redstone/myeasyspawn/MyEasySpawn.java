@@ -7,7 +7,9 @@ import fr.mouton_redstone.myeasyspawn.commands.SpawnConfig;
 import fr.mouton_redstone.myeasyspawn.events.MenuHandler;
 import fr.mouton_redstone.myeasyspawn.events.JoinLeaveListener;
 import fr.mouton_redstone.myeasyspawn.events.TeleportationListener;
-import fr.mouton_redstone.myeasyspawn.models.WarpStorageUtil;
+import fr.mouton_redstone.myeasyspawn.models.SQLInterface;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -22,6 +24,10 @@ public final class MyEasySpawn extends JavaPlugin {
 
     private static MyEasySpawn plugin;
     private static Properties serverProperties = new Properties();
+    // SQL Interface related
+    public static SQLInterface sql;
+    private final String[] warpsColumns = new String[]{"name","id","world", "x", "y", "z", "yaw", "pitch"};
+    private final String[] warpsDims = new String[]{"TEXT NOT NULL PRIMARY KEY","TEXT NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0"};
 
     public static HashMap<UUID, Long> cooldown;
 
@@ -33,32 +39,27 @@ public final class MyEasySpawn extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
+        // Start SQL and make sure there is a Warps table
+        sql = new SQLInterface(this);
+        if (!sql.checkTable("Warps")) {
+            sql.createTable("Warps", this.warpsColumns, this.warpsDims);
+        }
+
         // Get the server's properties
+        System.out.println("[MyEasySpawn] Loading server's properties");
         try {
             File propertiesFile = new File( "server.properties");
             if (propertiesFile.exists()) {
                 Reader reader = new FileReader(propertiesFile);
                 serverProperties.load(reader);
             }else{
-                System.out.println("[My Easy Spawn] Unable to find server's properties, my result in the plugin's crash");
+                System.out.println("[My Easy Spawn] Unable to find server's properties, might result in the plugin's crash");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Load Warps from persistent storage util
-        try {
-            WarpStorageUtil.loadWarps();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // Update the warps spawn location
-        String mainWorldName = serverProperties.getProperty("level-name");
-        if (WarpStorageUtil.getWarp("Spawn") == null){
-            WarpStorageUtil.createWarp("Spawn", plugin.getServer().getWorld(mainWorldName).getSpawnLocation());
-        } else {
-            WarpStorageUtil.updateWarp("Spawn", plugin.getServer().getWorld(mainWorldName).getSpawnLocation());
-        }
+        updateDatabaseSpawn( plugin.getServer().getWorld(serverProperties.getProperty("level-name")) );
 
         getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("mes_setcooldown").setExecutor(new SetCooldownCommand());
@@ -72,12 +73,18 @@ public final class MyEasySpawn extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        try {
-            WarpStorageUtil.saveWarps();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        sql.closeConnection();
         System.out.println("[My Easy Spawn] My Easy Spawn has successfully stopped");
+    }
+
+    public static void updateDatabaseSpawn(World world){
+        String mainWorldName = world.getName();
+        Location spawnLoc = world.getSpawnLocation();
+        String x = Double.toString(spawnLoc.getX());
+        String y = Double.toString(spawnLoc.getY());
+        String z = Double.toString(spawnLoc.getZ());
+        sql.query("INSERT OR REPLACE INTO Warps (name, world, x, y, z, yaw, pitch) " +
+                "VALUES('Spawn', '"+mainWorldName+"' ,"+x+", "+y+", "+z+", 0, 0)");
     }
 
     public static MyEasySpawn getPlugin() {
