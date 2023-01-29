@@ -1,7 +1,9 @@
 package fr.mouton_redstone.myeasyspawnhome.commands;
 
+import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
 import fr.mouton_redstone.myeasyspawnhome.MyEasySpawnHome;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,13 +31,16 @@ public class SetHomeCommand implements CommandExecutor {
             if (number>plugin.getConfig().getInt("max_homes") || number<1){
                 p.sendMessage(ChatColor.RED + "Please limit to " + Integer.toString(plugin.getConfig().getInt("max_homes")) + " homes");
             }else{
-                if(HomesStorageUtil.getHome(p.getDisplayName(), number)==null){
-                    HomesStorageUtil.createHome(p.getDisplayName(), number, p.getLocation());
-                    p.sendMessage(ChatColor.GREEN + "Your home has been set");
-                }else{
-                    HomesStorageUtil.updateHome(p.getDisplayName(), number, p.getLocation());
-                    p.sendMessage(ChatColor.GREEN + "Your home has been moved");
-                }
+                String key = p.getCustomName()+" + "+number;
+                Location playerPos = p.getLocation();
+                String worldName = playerPos.getWorld().getName();
+                String x = Double.toString(playerPos.getX());
+                String y = Double.toString(playerPos.getY());
+                String z = Double.toString(playerPos.getZ());
+                MyEasySpawnHome.sql.query("INSERT OR REPLACE INTO Homes (id, world, x, y, z, yaw, pitch) " +
+                                          "VALUES('"+key+"', '"+worldName+"' ,"+x+", "+y+", "+z+", 0, 0)");
+
+                p.sendMessage(ChatColor.GREEN + "Your home has been set");
             }
 
         }else{

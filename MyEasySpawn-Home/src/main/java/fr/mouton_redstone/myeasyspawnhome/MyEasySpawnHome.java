@@ -1,5 +1,6 @@
 package fr.mouton_redstone.myeasyspawnhome;
 
+import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
 import fr.mouton_redstone.myeasyspawn.models.SQLInterface;
 import fr.mouton_redstone.myeasyspawnhome.commands.HomeCommand;
 import fr.mouton_redstone.myeasyspawnhome.commands.SetHomeCommand;
@@ -12,7 +13,7 @@ public final class MyEasySpawnHome extends JavaPlugin {
     private static MyEasySpawnHome plugin;
     // SQL related
     public static SQLInterface sql;
-    private final String[] homesColumns = new String[]{"name","world", "x", "y", "z", "yaw", "pitch"};
+    private final String[] homesColumns = new String[]{"id","world", "x", "y", "z", "yaw", "pitch"};
     private final String[] homesDims = new String[]{"TEXT NOT NULL PRIMARY KEY","TEXT NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0"};
 
 
@@ -22,7 +23,7 @@ public final class MyEasySpawnHome extends JavaPlugin {
         plugin = this;
 
         // Load SQL and make sure there is a home table
-        sql = MyEasySpawnHome.sql;
+        sql = MyEasySpawn.sql;
         if (!sql.checkTable("Homes")) {
             sql.createTable("Homes", this.homesColumns, this.homesDims);
         }

@@ -1,6 +1,7 @@
 package fr.mouton_redstone.myeasyspawnhome.commands;
 
 import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
+import fr.mouton_redstone.myeasyspawn.models.SQLInterface;
 import fr.mouton_redstone.myeasyspawnhome.MyEasySpawnHome;
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -28,7 +29,8 @@ public class HomeCommand implements CommandExecutor {
             }else{
                 number = 1;
             }
-            Location home = HomesStorageUtil.getHome(p.getDisplayName(), number);
+            String key = p.getCustomName()+" + "+number;
+            Location home = SQLInterface.resultToLocation(MyEasySpawn.sql.query("SELECT * FROM Homes WHERE id='"+key+"'"));
 
             if (home == null){
                 Bukkit.dispatchCommand(p, "setHome "+Integer.toString(number));

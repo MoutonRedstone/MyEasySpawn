@@ -214,6 +214,7 @@ public class SQLInterface {
         }
     }
 
+    // Reqests formatting
     public static Location resultToLocation(ResultSet result){
         try{
             World world = plugin.getServer().getWorld(result.getString("world"));
@@ -223,8 +224,7 @@ public class SQLInterface {
             Location loc = new Location(world, x, y, z);
             return loc;
         }catch(SQLException e){
-            plugin.getLogger().severe(e.getMessage());
-           return null;
+            return null;
         }
     }
 }

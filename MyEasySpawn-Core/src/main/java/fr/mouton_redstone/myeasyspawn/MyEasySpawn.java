@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.UUID;
@@ -59,7 +60,13 @@ public final class MyEasySpawn extends JavaPlugin {
             e.printStackTrace();
         }
 
-        updateDatabaseSpawn( plugin.getServer().getWorld(serverProperties.getProperty("level-name")) );
+        try {
+            if (sql.query("SELECT COUNT(*) FROM Warps WHERE name='Spawn'").getInt(1)<1){
+                updateDatabaseSpawn( plugin.getServer().getWorld(serverProperties.getProperty("level-name")) );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("mes_setcooldown").setExecutor(new SetCooldownCommand());
