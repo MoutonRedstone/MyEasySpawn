@@ -1,0 +1,18 @@
+name: MyEasySpawn-Back
+version: '${project.version}'
+main: fr.mouton_redstone.myeasyspawnback.MyEasySpawnBack
+api-version: 1.19
+depend: [ MyEasySpawn ]
+authors: [ mouton_redstone ]
+description: Adds a /back command
+
+commands:
+  back:
+    description: teleports to your last location
+    usage: /<command>
+    permission: myeasyspawn.back
+
+permissions:
+  myeasyspawn.back:
+    description: allows to use /back
+    default: true
