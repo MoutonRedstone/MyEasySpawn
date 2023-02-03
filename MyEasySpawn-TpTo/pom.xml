@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fr.mouton_redstone</groupId>
-    <artifactId>MyEasySpawn-Home</artifactId>
+    <groupId>fr.mouton.redstone</groupId>
+    <artifactId>MyEasySpawn-TpTo</artifactId>
     <version>1.4</version>
     <packaging>jar</packaging>
 
-    <name>MyEasySpawn Home</name>
+    <name>MyEasySpawn-TpTo</name>
 
-    <description>adds /home command</description>
+    <description>Adds a tp request command</description>
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,15 +76,8 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
+            <version>1.18-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>fr.mouton_redstone</groupId>
-            <artifactId>MyEasySpawn</artifactId>
-            <scope>system</scope>
-            <version>1.4-RELEASE</version>
-            <systemPath>C:/Users/Un_dev/Documents/minercaft/blbl/server/plugins/MyEasySpawn-1.4-RELEASE.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

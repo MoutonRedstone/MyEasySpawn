@@ -1,14 +1,19 @@
 package fr.mouton_redstone.myeasyspawnback;
 
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class Listeners implements Listener {
-    @EventHandler
+    @EventHandler(
+            priority = EventPriority.NORMAL
+    )
     public void onTeleport(PlayerTeleportEvent e){
-        MyEasySpawnBack.backs.put(e.getPlayer().getUniqueId(), e.getFrom());
+        if (!e.isCancelled() && (e.getCause()== PlayerTeleportEvent.TeleportCause.PLUGIN || e.getCause()== PlayerTeleportEvent.TeleportCause.COMMAND)) {
+            MyEasySpawnBack.backs.put(e.getPlayer().getUniqueId(), e.getFrom());
+        }
     }
 
 

@@ -27,7 +27,7 @@ public final class MyEasySpawn extends JavaPlugin {
     private static Properties serverProperties = new Properties();
     // SQL Interface related
     public static SQLInterface sql;
-    private final String[] warpsColumns = new String[]{"name","id","world", "x", "y", "z", "yaw", "pitch"};
+    private final String[] warpsColumns = new String[]{"name","world", "x", "y", "z", "yaw", "pitch"};
     private final String[] warpsDims = new String[]{"TEXT NOT NULL PRIMARY KEY","TEXT NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0"};
 
     public static HashMap<UUID, Long> cooldown;

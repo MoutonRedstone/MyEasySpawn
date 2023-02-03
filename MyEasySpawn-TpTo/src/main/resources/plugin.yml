@@ -1,0 +1,22 @@
+name: MyEasySpawn-TpTo
+version: '${project.version}'
+main: fr.mouton.redstone.myeasyspawntpto.MyEasySpawnTpTo
+api-version: 1.18
+authors: [ Mouton_redstone ]
+description: Adds a tp request command
+
+commands:
+  tpto:
+    description: sends a teleport request
+    usage: /<command> [Player]
+    permission: myeasyspawn.tpto
+
+  tpaccept:
+    description: accepts the last teleportation request
+    usage: /<command>
+    permission: myeasyspawn.tpto
+
+permissions:
+  myeasyspawn.tpto:
+    description: allows to send teleport requests
+    default: true

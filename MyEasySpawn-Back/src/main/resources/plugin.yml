@@ -1,7 +1,7 @@
 name: MyEasySpawn-Back
 version: '${project.version}'
 main: fr.mouton_redstone.myeasyspawnback.MyEasySpawnBack
-api-version: 1.19
+api-version: 1.18
 depend: [ MyEasySpawn ]
 authors: [ mouton_redstone ]
 description: Adds a /back command

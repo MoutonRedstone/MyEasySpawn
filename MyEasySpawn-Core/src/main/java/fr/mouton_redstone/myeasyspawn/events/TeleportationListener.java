@@ -13,13 +13,15 @@ public class TeleportationListener implements Listener{
     Plugin plugin = MyEasySpawn.getPlugin(MyEasySpawn.class);
 
     @EventHandler
-    public void onTeleport(PlayerTeleportEvent p){
-        String teleportMessage = plugin.getConfig().getString("teleportMessage");
-        if (!teleportMessage.isBlank()) {
-            String teleportMessageColor = plugin.getConfig().getString("teleportMessageColor");
-            Player player = p.getPlayer();
-            teleportMessage = teleportMessage.replace("{username}", player.getDisplayName());
-            player.sendMessage(ChatColor.valueOf(teleportMessageColor) + teleportMessage);
+    public void onTeleport(PlayerTeleportEvent e){
+        if (!e.isCancelled() && (e.getCause()==PlayerTeleportEvent.TeleportCause.PLUGIN || e.getCause()==PlayerTeleportEvent.TeleportCause.COMMAND)) {
+            String teleportMessage = plugin.getConfig().getString("teleportMessage");
+            if (!teleportMessage.isBlank()) {
+                String teleportMessageColor = plugin.getConfig().getString("teleportMessageColor");
+                Player player = e.getPlayer();
+                teleportMessage = teleportMessage.replace("{username}", player.getDisplayName());
+                player.sendMessage(ChatColor.valueOf(teleportMessageColor) + teleportMessage);
+            }
         }
     }
 }
