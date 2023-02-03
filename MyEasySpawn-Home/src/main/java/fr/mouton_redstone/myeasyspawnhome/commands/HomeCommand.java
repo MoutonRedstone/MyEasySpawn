@@ -29,7 +29,7 @@ public class HomeCommand implements CommandExecutor {
             }else{
                 number = 1;
             }
-            String key = p.getCustomName()+" + "+number;
+            String key = p.getDisplayName()+" + "+number;
             Location home = SQLInterface.resultToLocation(MyEasySpawn.sql.query("SELECT * FROM Homes WHERE id='"+key+"'"));
 
             if (home == null){

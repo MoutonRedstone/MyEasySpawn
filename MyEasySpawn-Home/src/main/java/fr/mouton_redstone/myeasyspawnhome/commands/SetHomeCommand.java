@@ -31,7 +31,7 @@ public class SetHomeCommand implements CommandExecutor {
             if (number>plugin.getConfig().getInt("max_homes") || number<1){
                 p.sendMessage(ChatColor.RED + "Please limit to " + Integer.toString(plugin.getConfig().getInt("max_homes")) + " homes");
             }else{
-                String key = p.getCustomName()+" + "+number;
+                String key = p.getDisplayName()+" + "+number;
                 Location playerPos = p.getLocation();
                 String worldName = playerPos.getWorld().getName();
                 String x = Double.toString(playerPos.getX());

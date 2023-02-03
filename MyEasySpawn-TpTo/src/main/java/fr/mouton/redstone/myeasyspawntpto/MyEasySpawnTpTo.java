@@ -15,7 +15,8 @@ public final class MyEasySpawnTpTo extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        this.getCommand("tpto").setExecutor(new MyEasySpawnTpTo());
+        this.getCommand("tpto").setExecutor(new TpToCommand());
+        this.getCommand("tpaccept").setExecutor(new TpAcceptCommand());
         System.out.println("[MyEasySpawn-TpTo] TpTo extension successfully loaded");
     }
 

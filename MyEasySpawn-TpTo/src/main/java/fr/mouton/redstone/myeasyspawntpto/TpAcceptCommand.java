@@ -18,6 +18,7 @@ public class TpAcceptCommand implements CommandExecutor {
             Location targetLoc = p.getLocation();
             Player requestGuy = MyEasySpawnTpTo.tpRequests.get(p);
             requestGuy.teleport(targetLoc);
+            MyEasySpawnTpTo.tpRequests.remove(p);
         }else{
             System.out.println("[MyEasySpawn-TpTo] /back can only be used by player");
         }
