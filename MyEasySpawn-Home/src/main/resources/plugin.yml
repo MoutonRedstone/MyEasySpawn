@@ -11,9 +11,11 @@ commands:
   sethome:
     description: set your home location
     usage: /<command>
+    permission: myeasyspawn.sethome
   home:
     description: teleports you to your home
     usage: /<command>
+    permission: myeasyspawn.home
 
 permissions:
   myeasyspawn.home:
