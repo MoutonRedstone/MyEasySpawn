@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -26,30 +27,10 @@ public class SpawnConfig implements CommandExecutor {
 
             Inventory gui = Bukkit.createInventory(p, 9, "myEasySpawn Configuration :");
 
-            List<String> lore;
-
-            ItemStack cooldown = ConfigItemCreator.CreateCooldownItem();
-
-            ItemStack tpMessage = new ItemStack(Material.ENDER_PEARL);
-            ItemMeta tpMessage_meta = tpMessage.getItemMeta();
-            tpMessage_meta.setDisplayName("Edit teleport message");
-            lore = Arrays.asList(plugin.getConfig().getString("teleportMessage"));
-            tpMessage_meta.setLore(lore);
-            tpMessage.setItemMeta(tpMessage_meta);
-
-            ItemStack joinMessage = new ItemStack(Material.GREEN_BED);
-            ItemMeta joinMessage_meta = joinMessage.getItemMeta();
-            joinMessage_meta.setDisplayName("Edit server's join message");
-            lore = Arrays.asList(plugin.getConfig().getString("joinMessage"));
-            joinMessage_meta.setLore(lore);
-            joinMessage.setItemMeta(joinMessage_meta);
-
-            ItemStack leaveMessage = new ItemStack(Material.RED_BED);
-            ItemMeta leaveMessage_meta = leaveMessage.getItemMeta();
-            leaveMessage_meta.setDisplayName("Edit server's leave message");
-            lore = Arrays.asList(plugin.getConfig().getString("leaveMessage"));
-            leaveMessage_meta.setLore(lore);
-            leaveMessage.setItemMeta(leaveMessage_meta);
+            ItemStack cooldown = ConfigItemCreator.CooldownItem();
+            ItemStack tpMessage = ConfigItemCreator.TpMessageItem();
+            ItemStack joinMessage = ConfigItemCreator.JoinMessageItem();
+            ItemStack leaveMessage = ConfigItemCreator.LeaveMessageItem();
 
             ItemStack[] home_items = {cooldown, tpMessage, joinMessage, leaveMessage};
 

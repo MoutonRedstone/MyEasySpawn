@@ -21,8 +21,7 @@ public class MenuHandler implements Listener {
     public void clickEvent(InventoryClickEvent e){
         if (e.getView().getTitle().equalsIgnoreCase("myEasySpawn Configuration :")){
             e.setCancelled(true);
-            if(e.getCurrentItem() == null){
-            }else if(e.getCurrentItem().isSimilar(ConfigItemCreator.CreateCooldownItem())){ // Edit Cooldown
+            if(e.getCurrentItem().isSimilar( ConfigItemCreator.CooldownItem() )){ // Edit Cooldown
                 int cooldown = plugin.getConfig().getInt("spawnCooldown");
                 if(cooldown % 5 != 0){
                     cooldown = (int)(Math.ceil(cooldown/5f)*5);
@@ -34,9 +33,9 @@ public class MenuHandler implements Listener {
                 }
                 plugin.getConfig().set("spawnCooldown", cooldown);
                 // Update Item
-                ItemStack cooldownItem = ConfigItemCreator.CreateCooldownItem();
+                ItemStack cooldownItem = ConfigItemCreator.CooldownItem();
                 e.getClickedInventory().setItem(0, cooldownItem);
-            }else if(e.getCurrentItem().getType() == Material.ENDER_PEARL && e.getCurrentItem().getItemMeta().getDisplayName() == "Edit teleport message"){ // Edit TP message
+            }else if(e.getCurrentItem().isSimilar( ConfigItemCreator.TpMessageItem() )){ // Edit TP message
                 Inventory gui = Bukkit.createInventory(e.getWhoClicked(), InventoryType.ANVIL, "teleport_message_editor_anvil");
                 ItemStack tpMessage = new ItemStack(Material.PAPER);
                 ItemMeta tpMessage_meta = tpMessage.getItemMeta();
