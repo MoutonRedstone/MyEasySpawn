@@ -1,6 +1,7 @@
 package fr.mouton_redstone.myeasyspawn.commands;
 
 import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
+import fr.mouton_redstone.myeasyspawn.models.ConfigItemCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -25,12 +26,9 @@ public class SpawnConfig implements CommandExecutor {
 
             Inventory gui = Bukkit.createInventory(p, 9, "myEasySpawn Configuration :");
 
-            ItemStack cooldown = new ItemStack(Material.CLOCK);
-            ItemMeta cooldown_meta = cooldown.getItemMeta();
-            cooldown_meta.setDisplayName("Spawn Command Cooldown");
-            List<String> lore = Arrays.asList( Integer.toString(plugin.getConfig().getInt("spawnCooldown")) + " seconds");
-            cooldown_meta.setLore(lore);
-            cooldown.setItemMeta(cooldown_meta);
+            List<String> lore;
+
+            ItemStack cooldown = ConfigItemCreator.CreateCooldownItem();
 
             ItemStack tpMessage = new ItemStack(Material.ENDER_PEARL);
             ItemMeta tpMessage_meta = tpMessage.getItemMeta();
