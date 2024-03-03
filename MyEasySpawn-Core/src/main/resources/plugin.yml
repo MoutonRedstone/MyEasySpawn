@@ -1,7 +1,7 @@
 name: MyEasySpawn
 version: '${project.version}'
 main: fr.mouton_redstone.myeasyspawn.MyEasySpawn
-api-version: 1.18
+api-version: 1.19
 authors: [ Mouton_redstone ]
 description: Adds a /spawn command and more
 
