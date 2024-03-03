@@ -54,12 +54,13 @@ public final class MyEasySpawn extends JavaPlugin {
                 Reader reader = new FileReader(propertiesFile);
                 serverProperties.load(reader);
             }else{
-                System.out.println("[My Easy Spawn] Unable to find server's properties, might result in the plugin's crash");
+                System.out.println("[My Easy Spawn] Unable to find server's properties, might result in a plugin crash");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        // Get the world's spawn coords and add them to the SQL table
         try {
             if (sql.query("SELECT COUNT(*) FROM Warps WHERE name='Spawn'").getInt(1)<1){
                 updateDatabaseSpawn( plugin.getServer().getWorld(serverProperties.getProperty("level-name")) );
@@ -92,6 +93,8 @@ public final class MyEasySpawn extends JavaPlugin {
         String z = Double.toString(spawnLoc.getZ());
         sql.query("INSERT OR REPLACE INTO Warps (name, world, x, y, z, yaw, pitch) " +
                 "VALUES('Spawn', '"+mainWorldName+"' ,"+x+", "+y+", "+z+", 0, 0)");
+
+        System.out.println("[MyEasySpawn] Updated spawn coordinates");
     }
 
     public static MyEasySpawn getPlugin() {

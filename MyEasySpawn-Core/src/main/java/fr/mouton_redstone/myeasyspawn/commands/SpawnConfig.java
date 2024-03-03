@@ -27,6 +27,7 @@ public class SpawnConfig implements CommandExecutor {
 
             Inventory gui = Bukkit.createInventory(p, 9, "myEasySpawn Configuration :");
 
+            // Getting all the items from the item creation class
             ItemStack cooldown = ConfigItemCreator.CooldownItem();
             ItemStack tpMessage = ConfigItemCreator.TpMessageItem();
             ItemStack joinMessage = ConfigItemCreator.JoinMessageItem();

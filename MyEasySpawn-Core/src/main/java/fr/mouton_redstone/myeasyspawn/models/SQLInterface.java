@@ -19,6 +19,7 @@ public class SQLInterface {
     private int numRows = 0;
 
     public SQLInterface(Plugin plugin) {
+        // Opens the SQLite file
         File directory = new File(MyEasySpawn.getPlugin().getDataFolder().getAbsolutePath());
         if (!directory.exists()) {
             directory.mkdir();
@@ -27,7 +28,6 @@ public class SQLInterface {
         this.sqlFile = new File(directory + File.separator + "MyEasySpawnDatabase.db");
     }
 
-    //SQL database connection related
     public synchronized Connection getConnection() { //get SQL database
         try {
             if (this.conn == null || this.conn.isClosed()) { // if no connection to database, create new one
@@ -101,6 +101,8 @@ public class SQLInterface {
     }
 
     public ResultSet query(String query) {
+        // Execute a custom SQL query
+
         ResultSet results = null;
 
         try {
@@ -115,6 +117,8 @@ public class SQLInterface {
     }
 
     public HashMap<Integer, HashMap<String, Object>> select(String fields, String tableName, String where, String group, String order) {
+        // Execute a classic SELECT query
+
         if ("".equals(fields) || fields == null) {fields = "*";}
 
         String query = "SELECT " + fields + " FROM " + tableName;
@@ -214,7 +218,7 @@ public class SQLInterface {
         }
     }
 
-    // Reqests formatting
+    // transforming request into actual usable data
     public static Location resultToLocation(ResultSet result){
         try{
             World world = plugin.getServer().getWorld(result.getString("world"));

@@ -12,6 +12,8 @@ import java.util.List;
 
 public class ConfigItemCreator {
 
+    // My beloved item creation class
+
     static Plugin plugin = MyEasySpawn.getPlugin(MyEasySpawn.class);
 
     public static ItemStack CooldownItem(){

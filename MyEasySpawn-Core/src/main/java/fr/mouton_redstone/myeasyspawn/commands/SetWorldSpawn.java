@@ -10,8 +10,10 @@ import org.bukkit.entity.Player;
 public class SetWorldSpawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // Overrides minecraft default setworldspawn command
         if (sender instanceof Player p){
             try{
+                // Execute minecraft default setworldspawn command
                 Bukkit.dispatchCommand(sender, "minecraft:setworldspawn");
                 MyEasySpawn.updateDatabaseSpawn(p.getWorld());
             }catch(Exception e){
