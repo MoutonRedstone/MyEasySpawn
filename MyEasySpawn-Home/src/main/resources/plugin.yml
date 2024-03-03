@@ -1,7 +1,7 @@
 name: MyEasySpawn-Home
 version: '${project.version}'
 main: fr.mouton_redstone.myeasyspawnhome.MyEasySpawnHome
-api-version: 1.18
+api-version: 1.19
 authors: [ Mouton_redstone ]
 description: adds /home command
 depend:

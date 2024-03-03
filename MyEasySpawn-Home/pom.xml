@@ -6,7 +6,7 @@
 
     <groupId>fr.mouton_redstone</groupId>
     <artifactId>MyEasySpawn-Home</artifactId>
-    <version>1.4</version>
+    <version>1.5</version>
     <packaging>jar</packaging>
 
     <name>MyEasySpawn Home</name>
@@ -83,8 +83,8 @@
             <groupId>fr.mouton_redstone</groupId>
             <artifactId>MyEasySpawn</artifactId>
             <scope>system</scope>
-            <version>1.4-RELEASE</version>
-            <systemPath>C:/Users/Un_dev/Documents/minercaft/blbl/server/plugins/MyEasySpawn-1.4-RELEASE.jar</systemPath>
+            <version>1.5-RELEASE</version>
+            <systemPath>E:/Documents (v2)/minercaft/blbl/server/plugins/MyEasySpawn-1.5-RELEASE.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

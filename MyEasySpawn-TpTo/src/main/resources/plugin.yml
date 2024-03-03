@@ -1,7 +1,7 @@
 name: MyEasySpawn-TpTo
 version: '${project.version}'
 main: fr.mouton.redstone.myeasyspawntpto.MyEasySpawnTpTo
-api-version: 1.18
+api-version: 1.19
 authors: [ Mouton_redstone ]
 description: Adds a tp request command
 
