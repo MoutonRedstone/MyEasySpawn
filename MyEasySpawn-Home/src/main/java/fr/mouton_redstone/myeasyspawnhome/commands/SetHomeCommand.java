@@ -37,7 +37,7 @@ public class SetHomeCommand implements CommandExecutor {
                 String x = Double.toString(playerPos.getX());
                 String y = Double.toString(playerPos.getY());
                 String z = Double.toString(playerPos.getZ());
-                MyEasySpawnHome.sql.query("INSERT OR REPLACE INTO Homes (id, world, x, y, z, yaw, pitch) " +
+                MyEasySpawnHome.sql.query("INSERT OR REPLACE INTO Homes (player, id, world, x, y, z, yaw, pitch) " +
                                           "VALUES('"+key+"', '"+worldName+"' ,"+x+", "+y+", "+z+", 0, 0)");
 
                 p.sendMessage(ChatColor.GREEN + "Your home has been set");

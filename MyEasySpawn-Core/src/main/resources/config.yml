@@ -27,4 +27,5 @@ teleportMessageColor : GOLD
 # Cooldown for all tp commands (in seconds)
 cooldown: 0
 
+# I strongly recommend you to check out the extensions i have made for my plugin, such as Homes, Tp-To and Backs
 # This plugin was made by Mouton_redstone, all rights reserved

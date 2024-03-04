@@ -13,8 +13,8 @@ public final class MyEasySpawnHome extends JavaPlugin {
     private static MyEasySpawnHome plugin;
     // SQL related
     public static SQLInterface sql;
-    private final String[] homesColumns = new String[]{"id","world", "x", "y", "z", "yaw", "pitch"};
-    private final String[] homesDims = new String[]{"TEXT NOT NULL PRIMARY KEY","TEXT NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "DOUBLE NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0", "FLOAT NOT NULL DEFAULT 0"};
+    private final String[] homesColumns = new String[]{"player", "id", "world", "x", "y", "z", "yaw", "pitch"};
+    private final String[] homesDims = new String[]{"TEXT NOT NULL","INTEGER NOT NULL", "TEXT NOT NULL", "DOUBLE NOT NULL", "DOUBLE NOT NULL", "DOUBLE NOT NULL", "FLOAT NOT NULL", "FLOAT NOT NULL"};
 
 
     @Override

@@ -30,7 +30,7 @@ public class HomeCommand implements CommandExecutor {
                 number = 1;
             }
             String key = p.getDisplayName()+" + "+number;
-            Location home = SQLInterface.resultToLocation(MyEasySpawn.sql.query("SELECT * FROM Homes WHERE id='"+key+"'"));
+            Location home = SQLInterface.resultToLocation(MyEasySpawn.sql.query("SELECT * FROM Homes WHERE player='"+key+"'"));
 
             if (home == null){
                 Bukkit.dispatchCommand(p, "setHome "+Integer.toString(number));
