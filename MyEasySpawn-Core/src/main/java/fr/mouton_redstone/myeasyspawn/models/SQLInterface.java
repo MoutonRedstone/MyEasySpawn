@@ -220,6 +220,9 @@ public class SQLInterface {
 
     // transforming request into actual usable data
     public static Location resultToLocation(ResultSet result){
+        if(result == null){
+            return null;
+        }
         try{
             World world = plugin.getServer().getWorld(result.getString("world"));
             Double x = result.getDouble("x");

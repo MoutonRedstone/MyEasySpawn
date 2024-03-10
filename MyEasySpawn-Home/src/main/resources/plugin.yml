@@ -16,6 +16,10 @@ commands:
     description: teleports you to your home
     usage: /<command>
     permission: myeasyspawn.home
+  listhomes:
+    description: lists every home you have set
+    usage: /<command>
+    permission: myeasyspawn.home
 
 permissions:
   myeasyspawn.home:

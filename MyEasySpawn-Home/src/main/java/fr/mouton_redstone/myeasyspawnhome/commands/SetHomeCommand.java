@@ -31,14 +31,15 @@ public class SetHomeCommand implements CommandExecutor {
             if (number>plugin.getConfig().getInt("max_homes") || number<1){
                 p.sendMessage(ChatColor.RED + "Please limit to " + Integer.toString(plugin.getConfig().getInt("max_homes")) + " homes");
             }else{
-                String key = p.getDisplayName()+" + "+number;
                 Location playerPos = p.getLocation();
                 String worldName = playerPos.getWorld().getName();
                 String x = Double.toString(playerPos.getX());
                 String y = Double.toString(playerPos.getY());
                 String z = Double.toString(playerPos.getZ());
+                String yaw = Double.toString(playerPos.getYaw());
+                String pitch = Double.toString(playerPos.getPitch());
                 MyEasySpawnHome.sql.query("INSERT OR REPLACE INTO Homes (player, id, world, x, y, z, yaw, pitch) " +
-                                          "VALUES('"+key+"', '"+worldName+"' ,"+x+", "+y+", "+z+", 0, 0)");
+                                          "VALUES('"+p.getDisplayName()+"', '"+number+"', '"+worldName+"', "+x+", "+y+", "+z+", "+yaw+", "+pitch+")");
 
                 p.sendMessage(ChatColor.GREEN + "Your home has been set");
             }

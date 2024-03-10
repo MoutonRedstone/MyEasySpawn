@@ -3,10 +3,12 @@ package fr.mouton_redstone.myeasyspawnhome;
 import fr.mouton_redstone.myeasyspawn.MyEasySpawn;
 import fr.mouton_redstone.myeasyspawn.models.SQLInterface;
 import fr.mouton_redstone.myeasyspawnhome.commands.HomeCommand;
+import fr.mouton_redstone.myeasyspawnhome.commands.ListHomesCommand;
 import fr.mouton_redstone.myeasyspawnhome.commands.SetHomeCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.List;
 
 public final class MyEasySpawnHome extends JavaPlugin {
 
@@ -33,6 +35,7 @@ public final class MyEasySpawnHome extends JavaPlugin {
 
         getCommand("sethome").setExecutor(new SetHomeCommand());
         getCommand("home").setExecutor(new HomeCommand());
+        getCommand("listhomes").setExecutor(new ListHomesCommand());
         System.out.println("[MyEasySpawn-Home] Successfully loaded the home extension !");
     }
 

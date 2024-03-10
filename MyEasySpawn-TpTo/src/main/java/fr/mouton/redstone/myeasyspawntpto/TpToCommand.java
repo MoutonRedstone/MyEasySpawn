@@ -17,7 +17,7 @@ public class TpToCommand implements CommandExecutor {
             }
             String targetName = args[0];
             Player target = Bukkit.getPlayerExact(targetName);
-            if (!target.isOnline() || target==null){
+            if (target==null || !target.isOnline()){
                 p.sendMessage(ChatColor.RED + "Player doesn't exists or is not online");
                 return true;
             }
